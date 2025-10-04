@@ -1,0 +1,58 @@
+﻿Tên Use Case: Đặt Hàng (Place Order)
+Mục đích: Cho phép Khách Hàng mua (các) sản phẩm trong Giỏ hàng và hoàn tất quá trình thanh toán, tạo đơn hàng mới.
+
+
+Tác nhân chính: Khách Hàng (Customer)
+Tác nhân phụ: Hệ Thống Thanh Toán, Hệ Thống Vận Chuyển
+
+
+Điều kiện tiên quyết: 
+- Khách Hàng đã thêm ít nhất một sản phẩm vào Giỏ hàng.
+- Khách Hàng đã đăng nhập tài khoản.
+
+
+Điều kiện hậu kỳ: 
+- Một hồ sơ Đơn hàng mới được tạo và đánh dấu là "Chờ xác nhận".
+- Số lượng tồn kho của các sản phẩm đã đặt được cập nhật giảm đi.
+
+
+Luồng chính (Basic Flow):
+1. Khách Hàng truy cập trang Thanh toán (Checkout).
+2. Hệ thống hiển thị tổng tiền, yêu cầu xác nhận địa chỉ giao hàng và chọn phương thức thanh toán/vận chuyển.
+3. Khách Hàng xác nhận thông tin và nhấn "Đặt hàng".
+4. Hệ thống chuyển hướng đến cổng thanh toán (Hệ Thống Thanh Toán).
+5. Hệ Thống Thanh Toán xác nhận giao dịch thành công.
+6. Hệ thống tạo Đơn hàng, trừ tồn kho, gửi thông tin đơn hàng sang Hệ Thống Vận Chuyển, và gửi email xác nhận cho Khách Hàng.
+
+
+Luồng thay thế (Alternate Flow):
+A5: Thanh toán thất bại: Nếu Hệ Thống Thanh Toán thông báo giao dịch thất bại, Hệ thống thông báo lỗi và yêu cầu Khách Hàng thử lại (quay lại bước 3) hoặc chọn phương thức thanh toán khác.
+
+
+Tên Use Case: Quản Lý Sản Phẩm (Manage Products)
+Mục đích: Cho phép Quản Trị Viên (Admin) thêm mới, chỉnh sửa, hoặc xóa/vô hiệu hóa các sản phẩm có trên hệ thống bán hàng.
+
+
+Tác nhân chính: Quản Trị Viên (Administrator)
+Tác nhân phụ: Hệ thống (System)
+
+
+Điều kiện tiên quyết: 
+- Quản Trị Viên đã đăng nhập thành công vào khu vực quản trị.
+
+
+Điều kiện hậu kỳ: 
+- Dữ liệu sản phẩm trên cơ sở dữ liệu được cập nhật theo thay đổi.
+
+
+Luồng chính (Basic Flow):
+1. Quản Trị Viên chọn chức năng "Quản lý Sản phẩm" trong menu quản trị.
+2. Hệ thống hiển thị danh sách sản phẩm hiện tại.
+3. Quản Trị Viên chọn một hành động: Thêm mới/Sửa/Xóa.
+4. (Thêm mới/Sửa): Quản Trị Viên nhập/chỉnh sửa các thông tin cần thiết (Tên, Mã SKU, Mô tả, Giá, Số lượng tồn kho, Danh mục, Hình ảnh...).
+5. Quản Trị Viên nhấn "Lưu/Cập nhật".
+6. Hệ thống xác thực dữ liệu và ghi nhận cập nhật thành công vào cơ sở dữ liệu.
+
+
+Luồng thay thế (Alternate Flow):
+A4: Thiếu thông tin bắt buộc: Nếu Quản Trị Viên bỏ trống các trường dữ liệu bắt buộc (ví dụ: Tên sản phẩm, Giá), Hệ thống hiển thị thông báo lỗi và không cho phép lưu (quay lại bước 4).

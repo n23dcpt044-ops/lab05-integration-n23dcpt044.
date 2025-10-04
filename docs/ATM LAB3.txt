@@ -1,0 +1,28 @@
+﻿2.1. Giải thích Đối tượng Tham gia
+Đối tượng (Lifeline)
+	Vai trò trong hệ thống
+	Khách Hàng
+	Tác nhân (Actor) ngoài hệ thống, thực hiện các thao tác đầu vào.
+	Giao Diện ATM
+	Module quản lý màn hình và bàn phím, tương tác trực tiếp với người dùng.
+	Bộ Điều Khiển Rút Tiền
+	Lớp trung tâm xử lý logic nghiệp vụ, điều phối yêu cầu giữa các hệ thống (Server) và thiết bị (Cash Dispenser).
+	Cơ Sở Dữ Liệu Tài Khoản
+	Đại diện cho hệ thống Ngân hàng (Bank Server), xử lý các nghiệp vụ kiểm tra và cập nhật tài khoản.
+	Bộ Phân Phối Tiền
+	Thiết bị vật lý có trách nhiệm đếm và nhả tiền mặt theo lệnh.
+	
+
+2.2. Giải thích Thông điệp Trao đổi
+Thông điệp
+	Loại thông điệp
+	Mô tả chi tiết
+	KiểmTraSốDư()
+	Truy vấn
+	Yêu cầu Bank Server xác thực Khách Hàng có đủ tiền để thực hiện giao dịch không.
+	CậpNhậtSốDư()
+	Cập nhật
+	Lệnh chính thức gửi đến Bank Server để trừ số tiền giao dịch khỏi tài khoản.
+	XuấtTiền()
+	Điều khiển
+	Lệnh gửi đến phần cứng ATM để phân phối lượng tiền mặt đã được phê duyệt.
